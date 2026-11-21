@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matemática no Ensino Médio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+header, footer {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin-bottom: 12px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button, .botao {
+    background: #2563eb;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+button:hover, .botao:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+nav button {
+    background: white;
+    color: #123c69;
+    font-weight: bold;
+}
+
+nav button:hover, nav button.ativo {
+    background: #bfdbfe;
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.pagina {
+    display: none;
+}
+
+.pagina.ativa {
+    display: block;
+}
+
+.hero, .cartao, .pergunta {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #00000010;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.hero p, .cartao p {
+    margin-bottom: 15px;
+}
+
+.grade {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+h2.titulo, .hero h2, .cartao h3, .pergunta h3, #resultado h3 {
+    color: #123c69;
+}
+
+h2.titulo {
+    margin-bottom: 15px;
+}
+
+.cartao h3 {
+    margin-bottom: 10px;
+}
+
+.cartao img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.nivel {
+    text-align: center;
+    padding: 25px;
+}
+
+.nivel button {
+    margin-top: 10px;
+}
+
+#listaNiveis, #areaPerguntas {
+    margin-top: 20px;
+}
+
+.pergunta {
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.pergunta h3 {
+    margin-bottom: 12px;
+}
+
+.pergunta label {
+    display: block;
+    padding: 7px 0;
+    cursor: pointer;
+}
+
+#resultado {
+    display: none;
+    background: #dbeafe;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+.aviso {
+    color: #475569;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+    .hero h2 { font-size: 24px; }
+    nav button { padding: 10px 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Matemática no Ensino Médio</h1>
+<p>Aprenda matemática de um jeito simples e divertido!</p>
+
+<nav>
+<button class="ativo" onclick="mostrarPagina('inicio',this)">Início</button>
+<button onclick="mostrarPagina('sobre',this)">Sobre</button>
+<button onclick="mostrarPagina('conteudos',this)">Conteúdos</button>
+<button onclick="mostrarPagina('exercicios',this)">Exercícios</button>
+<button onclick="mostrarPagina('materiais',this)">Materiais</button>
+<button onclick="mostrarPagina('contato',this)">Contato</button>
+</nav>
+</header>
+
+<main>
+
+<!-- INÍCIO -->
+<section id="inicio" class="pagina ativa">
+
+<div class="hero">
+<h2>Bem-vindo ao mundo da Matemática!</h2>
+<p>Estude, assista às aulas e pratique com exercícios para melhorar seus conhecimentos.</p>
+<button onclick="mostrarPagina('conteudos')">Assistir às aulas</button>
+<button onclick="mostrarPagina('exercicios')">Fazer exercícios</button>
+</div>
+
+<h2 class="titulo">Explore a matemática</h2>
+
+<div class="grade">
+
+<div class="cartao">
+<img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" alt="Fórmulas matemáticas">
+<h3>Funções</h3>
+<p>Aprenda sobre funções e gráficos.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=funções+matemáticas+ensino+médio" target="_blank" rel="noopener">Ver aulas</a>
+</div>
+
+<div class="cartao">
+<img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80" alt="Estudo de matemática">
+<h3>Geometria</h3>
+<p>Explore formas, áreas e volumes.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=geometria+ensino+médio+aula" target="_blank" rel="noopener">Ver aulas</a>
+</div>
+
+<div class="cartao">
+<img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=600&q=80" alt="Caderno de estudos">
+<h3>Porcentagem</h3>
+<p>Aprenda a calcular porcentagens.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=porcentagem+ensino+médio+aula" target="_blank" rel="noopener">Ver aulas</a>
+</div>
+
+<div class="cartao">
+<img src="https://images.unsplash.com/photo-1509869175650-a1d97972541a?auto=format&fit=crop&w=600&q=80" alt="Materiais de estudo">
+<h3>Estatística</h3>
+<p>Entenda gráficos, médias e tabelas.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=estatística+ensino+médio+aula" target="_blank" rel="noopener">Ver aulas</a>
+</div>
+
+</div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="pagina">
+<h2 class="titulo">Sobre o projeto</h2>
+
+<div class="cartao">
+<h3>Nosso objetivo</h3>
+<p>Este site foi criado para ajudar estudantes do Ensino Médio a aprender matemática de maneira simples, organizada e acessível.</p>
+
+<h3>O que você encontra aqui?</h3>
+<p>Você pode acessar conteúdos matemáticos, assistir a videoaulas, consultar materiais de estudo e responder exercícios de diferentes níveis de dificuldade.</p>
+
+<h3>Aprender praticando</h3>
+<p>Nosso objetivo é tornar o estudo mais interessante e ajudar você a desenvolver seus conhecimentos matemáticos.</p>
+</div>
+</section>
+
+<!-- CONTEÚDOS -->
+<section id="conteudos" class="pagina">
+<h2 class="titulo">Conteúdos de Matemática</h2>
+<p>Escolha um assunto para encontrar videoaulas.</p>
+
+<div class="grade">
+
+<div class="cartao">
+<h3>Funções</h3>
+<p>Função do primeiro e segundo grau, gráficos e raízes.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=funções+matemáticas+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+<div class="cartao">
+<h3>Geometria</h3>
+<p>Áreas, perímetros, volumes e figuras geométricas.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=geometria+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+<div class="cartao">
+<h3>Trigonometria</h3>
+<p>Seno, cosseno, tangente e triângulo retângulo.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=trigonometria+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+<div class="cartao">
+<h3>Estatística</h3>
+<p>Média, moda, mediana e interpretação de gráficos.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=estatística+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+<div class="cartao">
+<h3>Probabilidade</h3>
+<p>Aprenda a calcular chances e possibilidades.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=probabilidade+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+<div class="cartao">
+<h3>Matemática financeira</h3>
+<p>Porcentagem, juros simples e juros compostos.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=matemática+financeira+ensino+médio" target="_blank" rel="noopener">Assistir aulas</a>
+</div>
+
+</div>
+</section>
+
+<!-- EXERCÍCIOS -->
+<section id="exercicios" class="pagina">
+<h2 class="titulo">Exercícios de Matemática</h2>
+<p>Escolha a dificuldade para começar a responder às questões.</p>
+
+<div id="listaNiveis" class="grade">
+
+<div class="cartao nivel">
+<h3>🟢 Fácil</h3>
+<p>Questões básicas para praticar.</p>
+<button onclick="abrirNivel('facil')">Começar</button>
+</div>
+
+<div class="cartao nivel">
+<h3>🟡 Intermediário</h3>
+<p>Questões para testar seus conhecimentos.</p>
+<button onclick="abrirNivel('intermediario')">Começar</button>
+</div>
+
+<div class="cartao nivel">
+<h3>🔴 Difícil</h3>
+<p>Questões para um desafio maior.</p>
+<button onclick="abrirNivel('dificil')">Começar</button>
+</div>
+
+</div>
+
+<div id="areaPerguntas" style="display:none;">
+<h2 id="tituloNivel" class="titulo"></h2>
+<form id="formulario"></form>
+<button id="enviarBtn" onclick="corrigir(event)">Enviar respostas</button>
+<button onclick="voltarNiveis()">Voltar às dificuldades</button>
+<div id="resultado"></div>
+</div>
+</section>
+
+<!-- MATERIAIS -->
+<section id="materiais" class="pagina">
+<h2 class="titulo">Materiais de estudo</h2>
+<p>Use estes recursos para revisar os conteúdos.</p>
+
+<div class="grade">
+
+<div class="cartao">
+<h3>📘 Apostilas e resumos</h3>
+<p>Pesquise resumos e materiais para o Ensino Médio.</p>
+<a class="botao" href="https://www.google.com/search?q=apostila+matemática+ensino+médio+PDF" target="_blank" rel="noopener">Encontrar materiais</a>
+</div>
+
+<div class="cartao">
+<h3>🎥 Videoaulas</h3>
+<p>Encontre explicações de diferentes assuntos.</p>
+<a class="botao" href="https://www.youtube.com/results?search_query=matemática+ensino+médio+aulas" target="_blank" rel="noopener">Ver videoaulas</a>
+</div>
+
+<div class="cartao">
+<h3>✏️ Exercícios extras</h3>
+<p>Pratique com questões de matemática.</p>
+<a class="botao" href="https://www.google.com/search?q=exercícios+de+matemática+ensino+médio+com+respostas" target="_blank" rel="noopener">Encontrar exercícios</a>
+</div>
+
+</div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="pagina">
+<h2 class="titulo">Contato</h2>
+
+<div class="cartao">
+<p>Envie uma mensagem ou sugestão sobre o site.</p>
+
+<form id="formContato">
+
+<label for="nome">Seu nome:</label>
+<input type="text" id="nome" placeholder="Digite seu nome" required>
+
+<label for="email">Seu e-mail:</label>
+<input type="email" id="email" placeholder="Digite seu e-mail" required>
+
+<label for="mensagem">Mensagem:</label>
+<textarea id="mensagem" placeholder="Digite sua mensagem" required></textarea>
+
+<button type="submit">Enviar mensagem</button>
+</form>
+
+<p id="avisoContato" class="aviso"></p>
+<p class="aviso">Observação: este formulário é demonstrativo e não envia mensagens para um e-mail real.</p>
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>Matemática no Ensino Médio © 2026</p>
+<p>Aprender matemática pode ser mais fácil!</p>
+</footer>
+
+<script>
+
+// Trocar as páginas
+function mostrarPagina(id, botao) {
+    document.querySelectorAll('.pagina').forEach(p => p.classList.remove('ativa'));
+    document.getElementById(id).classList.add('ativa');
+
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('ativo'));
+
+    if (botao) {
+        botao.classList.add('ativo');
+    } else {
+        document.querySelectorAll('nav button').forEach(b => {
+            if (b.getAttribute('onclick').includes("'" + id + "'")) {
+                b.classList.add('ativo');
+            }
+        });
+    }
+
+    if (id == 'exercicios') voltarNiveis();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Perguntas
+const exercicios = {
+    facil: [
+        ["Quanto é 7 + 5?", ["10","12","13","15"], 1],
+        ["Quanto é 9 × 3?", ["18","21","27","30"], 2],
+        ["Quanto é 20 ÷ 4?", ["4","5","6","8"], 1],
+        ["Quanto é 15 - 8?", ["5","6","7","8"], 2],
+        ["Qual é o dobro de 12?", ["20","22","24","26"], 2]
+    ],
+
+    intermediario: [
+        ["Resolva: 2x + 6 = 16.", ["x = 4","x = 5","x = 6","x = 8"], 1],
+        ["Qual é a área de um retângulo de 8 cm por 4 cm?", ["12 cm²","24 cm²","32 cm²","36 cm²"], 2],
+        ["Quanto é 25% de 200?", ["25","40","50","75"], 2],
+        ["Qual é a média de 6, 8 e 10?", ["6","7","8","9"], 2],
+        ["Qual é o valor de 3² + 4?", ["9","12","13","16"], 2]
+    ],
+
+    dificil: [
+        ["Quais são as raízes de x² - 5x + 6 = 0?", ["1 e 6","2 e 3","-2 e -3","0 e 6"], 1],
+        ["Se f(x) = 2x² - 3, quanto vale f(3)?", ["9","12","15","18"], 2],
+        ["Um produto de R$ 200 recebe desconto de 15%. Qual é o preço final?", ["R$ 150","R$ 160","R$ 170","R$ 185"], 2],
+        ["Qual é o valor de sen(30°)?", ["0","1/2","√2/2","1"], 1],
+        ["Qual é a solução de 3x - 7 = 2x + 9?", ["x = 2","x = 9","x = 16","x = 18"], 2]
+    ]
+};
+
+let nivelAtual = '';
+
+// Abrir um nível
+function abrirNivel(nivel) {
+    nivelAtual = nivel;
+
+    document.getElementById('listaNiveis').style.display = 'none';
+    document.getElementById('areaPerguntas').style.display = 'block';
+    document.getElementById('resultado').style.display = 'none';
+    document.getElementById('resultado').innerHTML = '';
+    document.getElementById('enviarBtn').style.display = 'inline-block';
+
+    let nomes = {
+        facil: 'Fácil',
+        intermediario: 'Intermediário',
+        dificil: 'Difícil'
+    };
+
+    document.getElementById('tituloNivel').textContent = 'Nível ' + nomes[nivel];
+
+    let formulario = document.getElementById('formulario');
+    formulario.innerHTML = '';
+
+    exercicios[nivel].forEach((q, i) => {
+        let bloco = document.createElement('div');
+        bloco.className = 'pergunta';
+
+        let html = '<h3>' + (i + 1) + '. ' + q[0] + '</h3>';
+
+        q[1].forEach((opcao, j) => {
+            html += '<label><input type="radio" name="pergunta' + i + '" value="' + j + '"> ';
+            html += String.fromCharCode(65 + j) + ') ' + opcao + '</label>';
+        });
+
+        bloco.innerHTML = html;
+        formulario.appendChild(bloco);
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Corrigir respostas
+function corrigir(event) {
+    event.preventDefault();
+
+    let questoes = exercicios[nivelAtual];
+    let acertos = 0;
+    let respostas = '';
+
+    questoes.forEach((q, i) => {
+        let marcada = document.querySelector('input[name="pergunta' + i + '"]:checked');
+
+        if (marcada && Number(marcada.value) == q[2]) acertos++;
+
+        let letra = String.fromCharCode(65 + q[2]);
+
+        respostas += '<p><strong>' + (i + 1) + '. ' + q[0] + '</strong><br>';
+        respostas += 'Resposta correta: ' + letra + ') ' + q[1][q[2]] + '</p>';
+    });
+
+    let resultado = document.getElementById('resultado');
+
+    resultado.innerHTML = '<h3>Resultado: ' + acertos + ' de ' + questoes.length + ' acertos!</h3>';
+    resultado.innerHTML += '<p>Você acertou ' + (acertos * 20) + '% da atividade.</p>';
+    resultado.innerHTML += '<hr style="margin: 15px 0;"><h3>Gabarito</h3>' + respostas;
+
+    resultado.style.display = 'block';
+    document.getElementById('enviarBtn').style.display = 'none';
+
+    setTimeout(() => resultado.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+// Voltar aos níveis
+function voltarNiveis() {
+    document.getElementById('listaNiveis').style.display = 'grid';
+    document.getElementById('areaPerguntas').style.display = 'none';
+    document.getElementById('formulario').innerHTML = '';
+    document.getElementById('resultado').style.display = 'none';
+    document.getElementById('resultado').innerHTML = '';
+    document.getElementById('enviarBtn').style.display = 'inline-block';
+
+    nivelAtual = '';
+}
+
+// Formulário de contato
+document.getElementById('formContato').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    document.getElementById('avisoContato').textContent =
+        'Mensagem preenchida! Este site ainda não está conectado a um serviço de envio de mensagens.';
+
+    this.reset();
+});
+
+</script>
+
+</body>
+</html>
